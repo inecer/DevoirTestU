@@ -42,19 +42,36 @@ public class Formation
     // des frais kilométriques versés pour une formation
     // en ne prenant en compte que les participants présents.
     // On rembourse 1.89 du KM
-    public double CalculerFraisRemboursementKilometriques()
+    public double CalculerFraisRemboursementKilometriques(ArrayList<Participant> lesParticipants)
     {
-        // A compléter ici
+        double tauxDeRemboursement = 1.89;
+        double total = 0.0;
 
-        return 0;
+        for(Participant participant : lesParticipants) {
+            if(participant.isEstPresent()) {
+                double fraisKm = participant.getNbKm() * tauxDeRemboursement;
+                total = total + fraisKm;
+            }
+        }
+
+        return total;
     }
 
     // Cette méthode permet de calculer le taux de présence
     // par rapport au nombre d'inscrits
-    public double TauxDePresence()
+    public double TauxDePresence(ArrayList<Participant> lesParticipants)
     {
-        // A compléter ici
-        return 0;
+        int nbInscrits = lesParticipants.size();
+        int nbPresent = 0;
+
+        for(Participant participant : lesParticipants){
+            if(participant.isEstPresent()){
+                nbPresent++;
+            }
+        }
+
+
+        return (double) nbPresent / nbInscrits * 100.0;
     }
 
     // Cette méthode permet de calculer le bénéfice de la formation.
@@ -62,7 +79,16 @@ public class Formation
     // les frais kilométriques versés
     public double BeneficeFormation()
     {
-        // A compléter ici
-        return  0;
+        double total = 0.0;
+
+        for(Participant participant : lesParticipants) {
+            boolean present = participant.isEstPresent();
+            if(present) {
+                int
+
+            }
+        }
+
+        return total;
     }
 }
